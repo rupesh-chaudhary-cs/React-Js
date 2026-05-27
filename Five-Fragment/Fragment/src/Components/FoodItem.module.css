@@ -1,4 +1,4 @@
-/* .kg-button{
+.kg-button{
     background-color: rgb(123, 123, 224);
 }
 
@@ -7,10 +7,7 @@
     font-size: 20px;
     color: rgb(120, 5, 22);
 }
-.heading{
-    background-color: rgb(255, 71, 102);
-    color: rgb(0, 0, 0);
-} */
 
-
-
+.new-button{
+    float: right;
+}
