@@ -6,12 +6,25 @@ function App() {
   
   let Val=['C','1','2','+','3','4','-','5','6','*','7','8','/','=','9','0','.'];
 
-  let [calVal,setCalVal]=useState([""]);
+  let [calVal,setCalVal]=useState("");
   
   const handleClick=(e,val3)=>{
-    let newVal=val3;
-    let finalVal=[...calVal.newVal];
-    setCalVal(finalVal);
+    
+    if(val3=='C'){
+      setCalVal("");
+    }else if(val3=="="){
+      const result=eval(calVal);
+      setCalVal(result);
+
+
+    }else{
+      let newVal=val3;
+      let finalVal=calVal+newVal;
+      setCalVal(finalVal);
+    }
+    // let finalVal=calVal+newVal;
+    // setCalVal(finalVal);
+
     console.log(`${val3} is clicked`);
   }
 
