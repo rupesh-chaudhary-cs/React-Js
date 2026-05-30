@@ -105,8 +105,8 @@ const TODOITEMSCONTEXTPROVIDER=({children})=>{
             onDeletenow,
             newName,
             newDate,
-            onInput,
             onDate,
+            onInput,
 
 
         }}>{children}</TODOITEMSCONTEXT.Provider>
