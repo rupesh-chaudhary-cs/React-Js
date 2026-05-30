@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import css from "./AddToDo.module.css";
+import TODOITEMSCONTEXT from "../Store/ITEMS";
 // import { BiMessageAdd } from "react-icons/bi";
 
 function AddToDo({handleronClick,handleronInput,handleronDate,newName,newDate}) {
+
+    const {onClick}=useContext(TODOITEMSCONTEXT);
+    
     return (
         <div className="container text-center">
             <div className={`${css["kg-margin"]} row`}>
@@ -19,7 +24,7 @@ function AddToDo({handleronClick,handleronInput,handleronDate,newName,newDate}) 
                 </div>
                 <div className="col-2">
                     <button
-                    onClick={handleronClick}
+                    onClick={onClick}
                     
                     type="button" className={`${css.button} btn btn-success `}>
                         {/* <BiMessageAdd /> */}

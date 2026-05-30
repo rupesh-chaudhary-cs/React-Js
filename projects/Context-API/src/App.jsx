@@ -5,6 +5,7 @@ import "./App.css";
 import { useState } from "react";
 import { use } from "react";
 import ErrorMessage from "./Components/ErrorMessage";
+import TODOITEMSCONTEXT from "./Store/ITEMS";
 function App() {
     // let todoItems = [
     //     {
@@ -82,14 +83,34 @@ function App() {
         console.log(`delete item named:${name3} and date :${date3}`)
     }
 
+    // const defaultVal=[{
+    //     name:"cook food",
+    //     date:"03/12/2024",
+    // }];
+
 
     return (
-        <center className="todo-container">
-            <Appname />
-            <AddToDo newName={newName} newDate={newDate} handleronClick={onClick} handleronInput={onInput} handleronDate={onDate} ></AddToDo>
-            <ErrorMessage todoItems1={todoItems}></ErrorMessage>
-            <TodoItems onDelete={onDeletenow}todoItems={todoItems}></TodoItems>
-        </center>
+        <TODOITEMSCONTEXT.Provider value={{
+            todoItems,
+            onClick,
+            onDeletenow,
+
+        }}>
+            <center className="todo-container">
+                <Appname />
+                <AddToDo
+                    newName={newName}
+                    newDate={newDate}
+        
+                    handleronInput={onInput}
+                    handleronDate={onDate}
+                ></AddToDo>
+                <ErrorMessage></ErrorMessage>
+                <TodoItems
+                    
+                ></TodoItems>
+            </center>
+        </TODOITEMSCONTEXT.Provider>
     );
 }
 export default App;

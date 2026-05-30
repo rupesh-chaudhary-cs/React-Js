@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import css from "./TodoItem.module.css"
+import TODOITEMSCONTEXT from "../Store/ITEMS";
 
-function TodoItem({todoName, todoDate,handleonDelete}) {
-    
+function TodoItem({todoName, todoDate}) {
+    const {onDeletenow}=useContext(TODOITEMSCONTEXT);
     return (
         <div className="container">
             <div className={`${css["kg-margin"]} row`}>
@@ -9,7 +11,9 @@ function TodoItem({todoName, todoDate,handleonDelete}) {
                 <div className="col-4" >{todoDate}</div>
                 <div className="col-2">
                     <button type="button" className={`${css.button} btn btn-danger`}
-                    onClick={handleonDelete}
+                    onClick={()=>{
+                        onDeletenow(todoName,todoDate)
+                    }}
                     >
                         
                         Delete
