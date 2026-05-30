@@ -2,7 +2,7 @@ import Appname from "./Components/Appname";
 import AddToDo from "./Components/AddToDo";
 import TodoItems from "./Components/TodoItems";
 import "./App.css";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { use } from "react";
 import ErrorMessage from "./Components/ErrorMessage";
 function App() {
@@ -37,28 +37,42 @@ function App() {
         }
     ]
     )
-    let [newName,setnewName]=useState("");
-    const onInput=(e)=>{
-        setnewName(e.target.value);
-        console.log(newName);
-    }
-    let [newDate,setnewDate]=useState("");
-    const onDate=(e)=>{
-        setnewDate(e.target.value);
-        console.log(newDate);
-    }
-    const onClick=({})=>{
-        if(newName !="" && newDate !=""){
+    // let [newName,setnewName]=useState("");
+    // const onInput=(e)=>{
+    //     setnewName(e.target.value);
+    //     console.log(newName);
+    // }
+    // let [newDate,setnewDate]=useState("");
+    // const onDate=(e)=>{
+    //     setnewDate(e.target.value);
+    //     console.log(newDate);
+    // }
+    let newName=useRef();
+    let newDate=useRef();
+    
+
+    const onClick=(e)=>{
+        e.preventDefault()
+        
+        let newName1=newName.current.value;
+        let newDate1=newDate.current.value;
+
+        if(newName1 !="" && newDate1 !=""){
             let newItem={
-            name:newName,
-            date:newDate,
+            name:newName1,
+            date:newDate1,
         }
-        let finalItem=[...todoItems,newItem];
-        settodoItems(finalItem);
+        // let finalItem=[...todoItems,newItem];
+        // settodoItems(finalItem);
+        settodoItems((curValue)=>{
+            return [...curValue,newItem]
+            
+        })
+        newName.current.value="";
+        newDate.current.value="";
         // event.preventDefault();  /*Form in React Js*/
         console.log("button is clicked");
-        setnewName("");
-        setnewDate("");
+
         }
         // let newItem={
         //     name:newName,
@@ -86,7 +100,7 @@ function App() {
     return (
         <center className="todo-container">
             <Appname />
-            <AddToDo newName={newName} newDate={newDate} handleronClick={onClick} handleronInput={onInput} handleronDate={onDate} ></AddToDo>
+            <AddToDo newName={newName} newDate={newDate} handleronClick={onClick} ></AddToDo>
             <ErrorMessage todoItems1={todoItems}></ErrorMessage>
             <TodoItems onDelete={onDeletenow}todoItems={todoItems}></TodoItems>
         </center>
