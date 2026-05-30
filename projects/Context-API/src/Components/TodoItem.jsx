@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import css from "./TodoItem.module.css"
-import TODOITEMSCONTEXT from "../Store/ITEMS";
+import {TODOITEMSCONTEXT} from "../Store/ITEMS";
 
 function TodoItem({todoName, todoDate}) {
     const {onDeletenow}=useContext(TODOITEMSCONTEXT);
