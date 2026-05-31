@@ -1,13 +1,13 @@
 const CreatePost = () => {
     return (
         <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" class="form-label">
                     Email address
                 </label>
                 <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                 />
@@ -15,8 +15,8 @@ const CreatePost = () => {
                     We'll never share your email with anyone else.
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" class="form-label">
                     Password
                 </label>
                 <input
@@ -25,13 +25,13 @@ const CreatePost = () => {
                     id="exampleInputPassword1"
                 />
             </div>
-            <div class="mb-3 form-check">
+            <div className="mb-3 form-check">
                 <input
                     type="checkbox"
-                    class="form-check-input"
+                    className="form-check-input"
                     id="exampleCheck1"
                 />
-                <label class="form-check-label" for="exampleCheck1">
+                <label className="form-check-label" for="exampleCheck1">
                     Check me out
                 </label>
             </div>
