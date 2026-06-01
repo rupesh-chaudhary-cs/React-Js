@@ -4,9 +4,9 @@ const ErrorMessage = ({handleronClick}) => {
             <h1>
                 There are no posts
             </h1>
-            <button type="button" class="btn btn-primary"
+            {/* <button type="button" class="btn btn-primary"
             onClick={handleronClick}
-            >Get Post From Server</button>
+            >Get Post From Server</button> */}
         </center>
     );
 };
