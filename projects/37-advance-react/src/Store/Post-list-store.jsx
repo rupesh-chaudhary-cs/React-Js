@@ -4,7 +4,8 @@ import { createContext, useReducer } from "react";
 export const PostList33= createContext({
     postList:[],
     addPost:()=>{},
-    deletePost:()=>{}
+    deletePost:()=>{},
+    addInitialPost:()=>{},
 });
 
 const postListReducer=(currItems,action)=>{
@@ -16,7 +17,7 @@ const postListReducer=(currItems,action)=>{
             body:action.payload.body,
             reaction:action.payload.reaction,
             userId:action.payload.userId,
-            tag:action.payload.tag,
+            tags:action.payload.tags,
         }]
         
     }else if(action.type=="DELETE_Item"){
@@ -24,6 +25,10 @@ const postListReducer=(currItems,action)=>{
             return ! (val55.id===action.payload.id);
         })
 
+    }else if(action.type=="ADDInitial_Item"){
+        finalPostList=action.payload.posts;
+        
+    
     }
     return finalPostList;
 }
@@ -36,7 +41,7 @@ const default_post_list=[
             body:"Hi Friends,I am going to Delhi for my vacations.Hope to enjoy a lot .Peace out",
             reaction:2,
             userId:"user-9",
-            tag:["vactaion","Mumbai","Enjoying "],
+            tags:["vactaion","Mumbai","Enjoying "],
 
         },
         {
@@ -45,11 +50,11 @@ const default_post_list=[
             body:"Finally passed the four year of my B.tech Course.",
             reaction:30,
             userId:"user-ID",
-            tag:["Graduating","Unbelievable"],
+            tags:["Graduating","Unbelievable"],
         },]
 const PostListProvider=({children})=>{
 
-    const[postList,dispatchPostList]=useReducer(postListReducer,default_post_list);
+    const[postList,dispatchPostList]=useReducer(postListReducer,[]);
 
     const addPost=(e,userId,postTitle,postContent,reaction,tag)=>{
         let userId4=userId.current.value;
@@ -72,10 +77,34 @@ const PostListProvider=({children})=>{
                 body:postContent2,
                 reaction:reaction2,
                 userId:userId4,
-                tag:tag2
+                tags:tag2
             }
         }
         dispatchPostList(addDispatch);
+
+
+
+
+        
+
+
+    }
+
+
+
+    const addInitialPost=(posts)=>{
+        
+
+        const addInitialDispatch={
+            type:"ADDInitial_Item",
+            payload:{
+                posts,
+            }
+        }
+        dispatchPostList(addInitialDispatch);
+
+
+        
 
         
 
@@ -99,6 +128,7 @@ const PostListProvider=({children})=>{
         postList,
         addPost,
         deletePost,
+        addInitialPost,
 
     }}>
         {children}

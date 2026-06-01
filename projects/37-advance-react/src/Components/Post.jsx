@@ -22,7 +22,7 @@ const Post = ({post}) => {
                 <p className="card-text">
                     {post.body}
                 </p>
-                {post["tag"].map((val)=>(
+                {post["tags"].map((val)=>(
                     <span key={val} className="badge text-bg-primary tag-effect">{val}</span>
                 ))}
 
