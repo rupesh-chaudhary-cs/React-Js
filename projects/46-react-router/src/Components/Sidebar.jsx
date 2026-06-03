@@ -1,4 +1,5 @@
-const Sidebar = ({selectedTab,setSelectedTab}) => {
+import { Link } from "react-router-dom";
+const Sidebar = ({}) => {
     return (
         <>
             <div
@@ -26,12 +27,12 @@ const Sidebar = ({selectedTab,setSelectedTab}) => {
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item"
                     
-                    onClick={()=>{
+                    /*onClick={()=>{
                         setSelectedTab("Home");
-                    }}>
-                        <a
-                            href="#"
-                            className={`nav-link text-white ${selectedTab==="Home" && 'active'}`}
+                    }}*/>
+                        <Link 
+                            to="/"
+                            className="nav-link text-white"
                             aria-current="page"
                         >
                             <svg
@@ -43,15 +44,15 @@ const Sidebar = ({selectedTab,setSelectedTab}) => {
                                 <use xlinkHref="#home"></use>
                             </svg>
                             Home
-                        </a>
+                        </Link>
                     </li>
 
                     <li
-                    onClick={()=>{
+                    /*onClick={()=>{
                         setSelectedTab("Create Post");
-                    }}
+                    }}*/
                     >
-                        <a href="#" className={`nav-link text-white ${selectedTab==="Create Post" && 'active'}`}>
+                        <Link to="/create-post" className={`nav-link text-white`}>
                             <svg
                                 className="bi pe-none me-2"
                                 width="16"
@@ -61,7 +62,7 @@ const Sidebar = ({selectedTab,setSelectedTab}) => {
                                 <use xlinkHref="#speedometer2"></use>
                             </svg>
                             Create Post
-                        </a>
+                        </Link>
                     </li>
 
                     
