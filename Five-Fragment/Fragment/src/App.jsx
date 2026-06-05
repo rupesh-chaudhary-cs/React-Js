@@ -28,6 +28,7 @@ function App() {
         e.target.value=" ";
         let allFood=[...foodItems,newFood];
         setFoodItems(allFood);
+        
 
     }
    }
