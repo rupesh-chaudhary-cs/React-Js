@@ -2,6 +2,7 @@
 // import { PostList33 } from "../Store/Post-list-store";
 // import { useNavigate } from "react-router-dom";
 import { Form, redirect } from "react-router-dom";
+import PostList from "./PostList";
 const CreatePost = () => {
     // const {addPost}=useContext(PostList33);
     // const navigate=useNavigate();
@@ -147,19 +148,22 @@ export const createpostAction=async(data)=>{
     let postData=Object.fromEntries(formData);
     console.log(postData);
     postData.tags=postData.tags.split(" ");
-    fetch("https://dummyjson.com/posts/add", {
+    const result =await fetch("https://dummyjson.com/posts/add", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(
             
                     postData
-           )
+           ),
            })
-           .then(res => res.json())
-           .then((data1)=>{
-            console.log("data=",data1)
+    const data1=await result.json()
+    console.log("data=",data1)
+    
+        //    .then((res) => res.json())
+        //    .then((data1)=>{
+        //     console.log(data1)
             
-           })
+        //    })
 
     return redirect("/");
 

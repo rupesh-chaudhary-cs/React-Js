@@ -3,9 +3,10 @@ import Post from "./Post";
 import { PostList33 } from "../Store/Post-list-store";
 import ErrorMessage from "./ErrorMessage";
 import LoaderSpinner from "./LoaderSpinner";
+import postList from "./CreatePost";
 
 import {useLoaderData} from "react-router-dom"
-const PostList=()=>{
+const PostList=({})=>{
      const postList=useLoaderData();
      let fullData=useContext(PostList33);
      
